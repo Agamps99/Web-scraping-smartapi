@@ -1,12 +1,16 @@
-from flask import Flask, render_template
-from scraper import scrape_jobs
+import streamlit as st
+from scraper import scrape_remoteok_jobs
 
-app = Flask(__name__)
+st.title("🔍 Remote Job Listings (Scraped Live!)")
+st.write("Showing remote jobs scraped from remoteok.com")
 
-@app.route("/")
-def home():
-    jobs = scrape_jobs()
-    return render_template("index.html", jobs=jobs)
+jobs = scrape_remoteok_jobs()
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if not jobs:
+    st.error("No jobs found.")
+else:
+    for job in jobs:
+        st.subheader(job['title'])
+        st.write(f"**Company:** {job['company']}")
+        st.markdown(f"[🌐 View Job Posting]({job['link']})")
+        st.markdown("---")
