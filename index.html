@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remote Jobs</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .job { margin-bottom: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        a { text-decoration: none; color: #007BFF; }
+    </style>
+</head>
+<body>
+    <h1>🔥 Remote Job Listings</h1>
+    {% for job in jobs %}
+        <div class="job">
+            <h3>{{ job.title }}</h3>
+            <p>{{ job.company }}</p>
+            <a href="{{ job.link }}" target="_blank">View Job</a>
+        </div>
+    {% endfor %}
+</body>
+</html>
