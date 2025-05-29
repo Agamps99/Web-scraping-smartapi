@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def scrape_jobs():
+def scrape_remoteok_jobs():
     url = "https://remoteok.com/remote-dev-jobs"
     headers = {"User-Agent": "Mozilla/5.0"}
     r = requests.get(url, headers=headers)
